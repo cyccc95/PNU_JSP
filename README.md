@@ -12,4 +12,10 @@
 + out 객체
 + application 객체
 + exception 객체
-
+### 03 내장 객체의 영역(Scope)
++ 내장 객체의 영역이란
++ 데이터 전송 객체(DTO)
++ page 영역
++ request 영역
++ session 영역
++ application 영역
