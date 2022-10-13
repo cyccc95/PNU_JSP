@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내장 객체 - response</title>
+<title>내장 객체 - response</title> 
 </head>
 <body>
 	<h2>1. 로그인 폼</h2>
@@ -27,3 +27,4 @@
 	</form>
 </body>
 </html>
+<!-- JSP에서는 페이지 이동할때 response 내장 객체의 sendRedirect() 사용 -->

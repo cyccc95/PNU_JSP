@@ -9,7 +9,7 @@
 <body>
 <%
 request.setCharacterEncoding("UTF-8");
-String id = request.getParameter("id");
+String id = request.getParameter("id"); // 전송되는 값이 하나라면 getParameter
 String sex = request.getParameter("sex");
 String[] favo = request.getParameterValues("favo");
 String favoStr = "";
@@ -19,6 +19,7 @@ if(favo != null){
 	}
 }
 String intro = request.getParameter("intro").replace("\r\n", "<br/>");
+// replace("찾을 문자열", "변경할 문자열"), enter가 \r\n으로 입력돼서 <br/>로 바꿔줘야함
 %>
 <ul>
 	<li>아이디 : <%= id %></li>

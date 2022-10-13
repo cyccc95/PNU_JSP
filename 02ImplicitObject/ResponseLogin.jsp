@@ -19,3 +19,5 @@ if (id.equalsIgnoreCase("must") && pwd.equalsIgnoreCase("1234")){
 %>
 </body>
 </html>
+
+<!-- 포워드(전달)은 페이지 이동과 다르게 제어 흐름을 넘겨주고자 할 때 사용 -->
