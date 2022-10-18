@@ -19,3 +19,9 @@
 + request 영역
 + session 영역
 + application 영역
+### 04 쿠키(Cookie)
++ 쿠키란
++ 기본 동작 확인
++ 레이어 팝업창 제어
++ 로그인 아이디 저장
+
