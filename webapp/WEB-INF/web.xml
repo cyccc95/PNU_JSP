@@ -46,4 +46,47 @@
     <param-name>MySQLPwd</param-name>
     <param-value>tiger</param-value>
   </context-param>
+  
+  <!-- H2 데이터베이스 접속 정보 -->
+  <context-param>
+    <param-name>H2Driver</param-name>
+    <param-value>org.h2.Driver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>H2URL</param-name>
+    <param-value>jdbc:h2:tcp://localhost/~/test</param-value>
+  </context-param>
+  <context-param>
+    <param-name>H2Id</param-name>
+    <param-value>sa</param-value>
+  </context-param>
+  <context-param>
+    <param-name>H2Pwd</param-name>
+    <param-value></param-value>
+  </context-param>
+  
+  <!-- 게시판 페이징 처리를 위한 설정값(예제 9-3) -->
+  <context-param>
+    <param-name>POSTS_PER_PAGE</param-name>
+    <param-value>10</param-value>
+  </context-param>
+  <context-param>
+    <param-name>PAGES_PER_BLOCK</param-name>
+    <param-value>5</param-value>
+  </context-param>
+  
+  <!-- 한글 깨짐 방지를 위한 필터 설정(예제 7-9) -->
+  <filter>
+    <filter-name>SetCharEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+      <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>
