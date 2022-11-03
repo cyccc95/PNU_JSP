@@ -20,7 +20,7 @@ BoardDAO dao = new BoardDAO(application, "MySQL");
 // 기존 코드
 int iResult = dao.insertWrite(dto);
 
-// 더미 데이터를 삽입하기 위한 코드
+// // 더미 데이터를 삽입하기 위한 코드
 // int iResult = 0;
 // for (int i = 1; i <= 100; i++) {
 //     dto.setTitle(title + "-" + i); 

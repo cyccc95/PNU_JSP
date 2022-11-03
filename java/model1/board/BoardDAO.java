@@ -79,26 +79,23 @@ public class BoardDAO extends JDBConnect {
         List<BoardDTO> bbs = new Vector<BoardDTO>();  // 결과(게시물 목록)를 담을 변수
         
         // 쿼리문 템플릿  
-        String query = " SELECT * FROM ( "
-                     + "    SELECT Tb.*, ROWNUM rNum FROM ( "
-                     + "        SELECT * FROM board ";
 
+        String query = "select * from board ";
         // 검색 조건 추가 
         if (map.get("searchWord") != null) {
             query += " WHERE " + map.get("searchField")
                    + " LIKE '%" + map.get("searchWord") + "%' ";
         }
         
-        query += "      ORDER BY num DESC "
-               + "     ) Tb "
-               + " ) "
-               + " WHERE rNum BETWEEN ? AND ?"; 
+        query += "ORDER BY num DESC limit ?,?";
 
+//        System.out.print(query);
+        
         try {
             // 쿼리문 완성 
             psmt = con.prepareStatement(query);
-            psmt.setString(1, map.get("start").toString());
-            psmt.setString(2, map.get("end").toString());
+            psmt.setInt(1, (Integer)map.get("start"));
+            psmt.setInt(2, (Integer)map.get("end"));
             
             // 쿼리문 실행 
             rs = psmt.executeQuery();

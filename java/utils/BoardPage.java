@@ -1,8 +1,9 @@
 package utils;
 
 public class BoardPage {
+
     public static String pagingStr(int totalCount, int pageSize, int blockPage,
-            int pageNum, String reqUrl) {
+            int pageNum, String reqUrl, String searchField, String searchWord) {
         String pagingStr = "";
 
         // 단계 3 : 전체 페이지 수 계산
@@ -20,9 +21,13 @@ public class BoardPage {
         // 단계 5 : 각 페이지 번호 출력
         int blockCount = 1;
         while (blockCount <= blockPage && pageTemp <= totalPages) {
-            if (pageTemp == pageNum) {
+
+        	if (pageTemp == pageNum) {
                 // 현재 페이지는 링크를 걸지 않음
                 pagingStr += "&nbsp;" + pageTemp + "&nbsp;";
+            } else if (searchWord != null){
+            	pagingStr += "&nbsp;<a href='" + reqUrl + "?searchField=" + searchField + "&searchWord=" + searchWord + "&pageNum="
+            			+ pageTemp + "'>" + pageTemp + "</a>&nbsp;";
             } else {
                 pagingStr += "&nbsp;<a href='" + reqUrl + "?pageNum=" + pageTemp
                              + "'>" + pageTemp + "</a>&nbsp;";

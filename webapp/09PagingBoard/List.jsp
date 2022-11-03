@@ -34,10 +34,12 @@ if (pageTemp != null && !pageTemp.equals(""))
     pageNum = Integer.parseInt(pageTemp); // 요청받은 페이지로 수정
 
 // 목록에 출력할 게시물 범위 계산
-int start = (pageNum - 1) * pageSize + 1;  // 첫 게시물 번호
+int start = (pageNum - 1) * pageSize;  // 첫 게시물 번호
 int end = pageNum * pageSize; // 마지막 게시물 번호
 param.put("start", start);
-param.put("end", end);
+param.put("end", pageSize);
+// 오라클은 시작 위치와 마지막 위치를 주지만
+// MySQL은 시작 위치와 개수를 줘서 end를 pageSize로 변경
 /*** 페이지 처리 end ***/
 
 List<BoardDTO> boardLists = dao.selectListPage(param);  // 게시물 목록 받기
@@ -118,8 +120,10 @@ else {
         <tr align="center">
             <!--페이징 처리-->
             <td>
-                <%= BoardPage.pagingStr(totalCount, pageSize,
-                       blockPage, pageNum, request.getRequestURI()) %>  
+
+				<%= BoardPage.pagingStr(totalCount, pageSize,
+                        blockPage, pageNum, request.getRequestURI(), searchField, searchWord) %>
+
             </td>
             <!--글쓰기 버튼-->
             <td><button type="button" onclick="location.href='Write.jsp';">글쓰기
