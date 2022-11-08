@@ -54,4 +54,17 @@
 + DAO 수정
 + List.jsp 수정
 + 동작 확인
+### 10 표현 언어(EL : Expression Language)
++ 표현 언어란?
++ EL의 내장 객체
++ 컬렉션 사용하기
++ EL의 연산자들
++ 인스턴스 메서드 호출
++ 정적 메서드 호출
+### 11 JSP 표준 태그 라이브러리(JSTL)
++ JSTL이란?
++ JSTL 사용 설정
++ 코어(Core) 태그
++ 국제화(Formatting) 태그
++ XML 태그
 
