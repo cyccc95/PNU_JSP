@@ -1,6 +1,7 @@
 package edu.common;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,9 +19,9 @@ import javax.servlet.http.Part;
 // jsp에서 form의 인코딩 타입(enctype) 이 multipart/form-data인 경우
 // 이 어노테이션과 매칭되어 있어야 제대로 동작함.
 @MultipartConfig (
-		fileSizeThreshold = 1024*1024,
-		maxFileSize = 1024*1024 * 5,
-		maxRequestSize = 1024*1024 * 5 * 5
+		fileSizeThreshold = 1024*1024,		// 1M가 넘어가면 메모리가 아닌 디스크에 임시 저장
+		maxFileSize = 1024*1024 * 5,		// 한번에 전달가능한 파일의 크기가 5M
+		maxRequestSize = 1024*1024 * 5 * 5	// 최대 5개까지 전송 가능
 )
 @WebServlet("/uploadfile")
 public class FileUploadServlet extends HttpServlet {
@@ -84,7 +85,9 @@ public class FileUploadServlet extends HttpServlet {
 		Collection<Part> parts = req.getParts();
 		for (Part p : parts) {
 			// 파일이 아니면 스킵, 파일이면 파일명 콘솔 화면에 출력
-			if (!p.getName().equals("fname"))
+			System.out.println("getName : " + p.getName());
+			System.out.println("getSubmittedFileName : " + p.getSubmittedFileName());
+			if (!p.getName().equals("fname") || p.getSubmittedFileName().equals(""))
 				continue;
 			else
 				System.out.println("p:" + p.getSubmittedFileName());
