@@ -50,6 +50,21 @@ public class MVCBoardDAO extends JDBConnect {
 
         query += " order by idx DESC limit ?,?";
 
+//        String query = " "
+//                + "SELECT * FROM ( "
+//                + "    SELECT Tb.*, ROWNUM rNum FROM ( "
+//                + "        SELECT * FROM mvcboard ";
+//
+//	   if (map.get("searchWord") != null)
+//	   {
+//	       query += " WHERE " + map.get("searchField")
+//	              + " LIKE '%" + map.get("searchWord") + "%' ";
+//	   }
+//	
+//	   query += "        ORDER BY idx DESC "
+//	          + "    ) Tb "
+//	          + " ) "
+//	          + " WHERE rNum BETWEEN ? AND ?";
         try {
             psmt = con.prepareStatement(query);
             psmt.setInt(1, (Integer)map.get("start"));
